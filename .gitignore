@@ -1,3 +1,4 @@
 build/
 webpack-stats.js
 .idea
+node_modules/
