@@ -1,4 +1,5 @@
 import urljoin from 'url-join';
+import { normalize } from 'normalizr';
 
 export const POSTS_REQUEST = 'POSTS_REQUEST';
 export const POSTS_SUCCESS = 'POSTS_SUCCESS';
@@ -12,14 +13,18 @@ export const EDIT_POST_REQUEST = 'EDIT_POST_REQUEST';
 export const EDIT_POST_SUCCESS = 'EDIT_POST_SUCCESS';
 export const EDIT_POST_FAILURE = 'EDIT_POST_FAILURE';
 
-import { apiRoot } from './api';
+import { apiRoot, post } from '../settings';
 import { CALL_API } from 'redux-api-middleware';
 
-export const getAllPosts = () => ({
+export const getPosts = () => ({
     [CALL_API]: {
         endpoint: urljoin(apiRoot, 'posts'),
         method: 'GET',
-        types: [POSTS_REQUEST, POSTS_SUCCESS, POSTS_FAILURE]
+        types: [
+            POSTS_REQUEST,
+            POSTS_SUCCESS,
+            POSTS_FAILURE
+        ]
     }
 });
 

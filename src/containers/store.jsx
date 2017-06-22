@@ -7,5 +7,5 @@ const enhancers = compose(
     window.devToolsExtension ? window.devToolsExtension() : null
 );
 
-const defaultStore = {};
-export const store = createStore(reducers, defaultStore, enhancers);
+const initialState = {};
+export const store = createStore(reducers, initialState, enhancers);
