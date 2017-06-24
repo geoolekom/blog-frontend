@@ -36,7 +36,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|svg|ttf|eot|woff|woff2)$/,
-                loader: 'url-loader/limit=4096&name=[path]/[name].[ext]'
+                loader: 'url-loader?limit=4096&name=[path]/[name].[ext]'
             }
         ]
     },
@@ -51,8 +51,8 @@ module.exports = {
         new BundleTracker({filename: './webpack-stats.json'}),
     ],
     resolve: {
-        modules: [`${__dirname}/static_src/`, 'node_modules'],
-        extensions: ['.js', '.jsx']
+        modules: [`${__dirname}/src/`, 'node_modules'],
+        extensions: ['.js', '.jsx', ]
     },
     resolveLoader: {
         modules: ['node_modules'],

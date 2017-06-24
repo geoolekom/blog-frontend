@@ -1,9 +1,13 @@
 import urljoin from 'url-join';
 import { normalize } from 'normalizr';
 
-export const POSTS_REQUEST = 'POSTS_REQUEST';
-export const POSTS_SUCCESS = 'POSTS_SUCCESS';
-export const POSTS_FAILURE = 'POSTS_FAILURE';
+export const POST_LIST_REQUEST = 'POST_LIST_REQUEST';
+export const POST_LIST_SUCCESS = 'POST_LIST_SUCCESS';
+export const POST_LIST_FAILURE = 'POST_LIST_FAILURE';
+
+export const POST_REQUEST = 'POST_REQUEST';
+export const POST_SUCCESS = 'POST_SUCCESS';
+export const POST_FAILURE = 'POST_FAILURE';
 
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
@@ -14,20 +18,20 @@ export const EDIT_POST_SUCCESS = 'EDIT_POST_SUCCESS';
 export const EDIT_POST_FAILURE = 'EDIT_POST_FAILURE';
 
 import { apiRoot, post } from '../settings';
-import { CALL_API } from 'redux-api-middleware';
+import { CALL_API, getJSON } from 'redux-api-middleware';
 
 export const getPosts = () => ({
     [CALL_API]: {
         endpoint: urljoin(apiRoot, 'posts', '/'),
         method: 'GET',
         types: [
-            POSTS_REQUEST,
+            POST_LIST_REQUEST,
             {
-                type: POSTS_SUCCESS,
-                payload: (action, state, res) => res.json().then(json => normalize(json, [ post ]))
+                type: POST_LIST_SUCCESS,
+                payload: (action, state, res) => getJSON(res).then(json => normalize(json, [ post ]))
 
             },
-            POSTS_FAILURE
+            POST_LIST_FAILURE
         ]
     }
 });
@@ -36,7 +40,15 @@ export const getPost = id => ({
     [CALL_API]: {
         endpoint: urljoin(apiRoot, 'posts', id, '/'),
         method: 'GET',
-        types: [POSTS_REQUEST, POSTS_SUCCESS, POSTS_FAILURE]
+        types: [
+            POST_REQUEST,
+            {
+                type: POST_SUCCESS,
+                payload: (action, state, res) => getJSON(res).then(json => normalize(json, post))
+
+            },
+            POST_FAILURE
+        ]
     }
 });
 

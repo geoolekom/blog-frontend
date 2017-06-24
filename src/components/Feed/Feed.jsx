@@ -5,17 +5,21 @@ import { denormalize } from 'normalizr';
 
 import { post } from "../../settings";
 import ListPost from "./ListPost";
-import Loader from 'react-loader';
+import { Segment } from 'semantic-ui-react';
+
+const padded = {
+    padding: "4px"
+};
 
 class Feed extends React.Component {
     render = () => {
         if (this.props.isLoading) {
-            return <Loader/>
+            return <Segment loading />;
         }
         const feedSchema = [ post ];
         const postList = denormalize(this.props.ids, feedSchema, this.props.entities);
-        const postArray = postList.map(post => <ListPost key={ post.id } title={ post.title } content={ post.content } />);
-        return <div>
+        const postArray = postList.map(post => <ListPost key={ post.id } id={ post.id } title={ post.title } content={ post.content } />);
+        return <div style={ padded }>
             { postArray }
         </div>;
     };

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Menu } from './Menu';
-import { Feed } from './Feed';
+import { Feed, DetailPost } from './Feed';
+import { Route } from "react-router-dom";
 
 class App extends React.Component {
     render = () => <div>
-        <Menu/>
-        <Feed/>
+        <Route exact path="/" component={Feed} />
+        <Route path="/:id" component={DetailPost} />
     </div>;
 }
 
