@@ -34,10 +34,10 @@ class Feed extends React.Component {
 const mapStateToProps = state => ({
     entities: state.get('entities'),
     ids: state.getIn(['display', 'feed', 'ids']),
-    isLoading: state.getIn(['display', 'feed', 'isLoading'])
+    isLoading: state.getIn(['display', 'feed', 'isLoading']),
 });
 
-import { getPosts } from '../../actions'
+import { getPosts } from '../../actions';
 const mapDispatchToProps = dispatch => (
     bindActionCreators({ getPosts }, dispatch)
 );

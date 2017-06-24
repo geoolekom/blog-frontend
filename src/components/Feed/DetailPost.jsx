@@ -6,6 +6,7 @@ import { denormalize } from 'normalizr';
 import { Segment } from "semantic-ui-react";
 import { post } from "../../settings";
 
+
 class DetailPost extends React.Component {
     render = () => {
         if (this.props.isLoading) {
