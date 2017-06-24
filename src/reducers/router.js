@@ -5,6 +5,6 @@ import { fromJS } from 'immutable';
 import { routerReducer } from 'react-router-redux';
 
 export const router = (state, action) => {
-    const result = routerReducer(state, action);
-    return fromJS(result);
+    const { location } = routerReducer(state, action);
+    return fromJS({ location });
 };
