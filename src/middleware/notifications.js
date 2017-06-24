@@ -12,7 +12,6 @@ export const notifications = store => next => action => {
                 title: action.payload.status,
                 message: action.payload.message,
                 position: 'tr',
-                autoDismiss: 0,
             }))
     }
     return next(action);

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Notifications from 'react-notification-system-redux';
 
 class Center extends React.Component {
-    render = () => <Notifications notifications={ this.props.notifications } />
+    render = () => <Notifications notifications={ this.props.notifications.toJS() } />
 }
 
 const mapStateToProps = state => ({
