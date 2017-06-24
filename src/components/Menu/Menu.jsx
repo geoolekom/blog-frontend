@@ -1,11 +1,11 @@
 import React from 'react';
-import { Menu } from "semantic-ui-react";
+import { Menu as SemanticMenu } from "semantic-ui-react";
 
 
 class Menu extends React.Component {
-    render = () => <Menu>
+    render = () => <SemanticMenu>
         Просто меню
-    </Menu>;
+    </SemanticMenu>;
 }
 
 export default Menu;

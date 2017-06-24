@@ -1,4 +1,4 @@
 build/
-webpack-stats.js
+webpack-stats.json
 .idea
 node_modules/

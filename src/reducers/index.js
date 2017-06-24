@@ -1,5 +1,6 @@
-import { combineReducers } from 'redux-immutable';
+import { combineReducers } from 'redux';
 import { routerReducer as router } from 'react-router-redux';
 import { entities } from './entities';
+import { display } from './display';
 
-export const reducers = combineReducers({ router, entities });
+export const reducers = combineReducers({ router, entities, display });
