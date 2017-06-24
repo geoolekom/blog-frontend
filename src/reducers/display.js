@@ -1,10 +1,10 @@
 /**
  * Created by geoolekom on 22.06.17.
  */
-import update from 'react-addons-update'
+import { fromJS } from 'immutable';
 import { POST_LIST_SUCCESS, POST_SUCCESS, POST_REQUEST, POST_LIST_REQUEST } from '../actions';
 
-const defaultState = {
+const defaultState = fromJS({
     feed: {
         ids: [],
         isLoading: false
@@ -12,33 +12,18 @@ const defaultState = {
     post: {
         isLoading: false
     }
-};
+});
 
 export const display = (state = defaultState, action) => {
     switch (action.type) {
         case POST_REQUEST:
-            return update(
-                state,
-                { post: { isLoading: { $set: true } } }
-            );
+            return state.setIn(['post', 'isLoading'], true);
         case POST_SUCCESS:
-            return update(
-                state,
-                { post: { isLoading: { $set: false } } }
-            );
+            return state.setIn(['post', 'isLoading'], false);
         case POST_LIST_REQUEST:
-            return update(
-                state,
-                { feed: { isLoading: { $set: true } } }
-            );
+            return state.setIn(['feed', 'isLoading'], true);
         case POST_LIST_SUCCESS:
-            return update(
-                state,
-                { feed: {
-                    ids: { $set: action.payload.result },
-                    isLoading: { $set: false }
-                } }
-            );
+            return state.setIn(['feed', 'isLoading'], false).setIn(['feed', 'ids'], fromJS(action.payload.result));
         default:
             return state;
     }

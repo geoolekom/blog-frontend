@@ -14,7 +14,7 @@ class DetailPost extends React.Component {
         this.id = this.props.match.params.id;
         const postDetail = denormalize(this.id, post, this.props.entities);
         return <Segment>
-            { postDetail ? postDetail.title : null }
+            { postDetail ? postDetail.get('title') : null }
         </Segment>;
     };
 
@@ -24,8 +24,8 @@ class DetailPost extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    entities: state.entities,
-    isLoading: state.display.post.isLoading
+    entities: state.get('entities'),
+    isLoading: state.getIn(['display', 'post', 'isLoading'])
 });
 
 import { getPost } from '../../actions';

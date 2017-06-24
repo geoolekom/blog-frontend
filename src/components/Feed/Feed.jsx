@@ -18,7 +18,9 @@ class Feed extends React.Component {
         }
         const feedSchema = [ post ];
         const postList = denormalize(this.props.ids, feedSchema, this.props.entities);
-        const postArray = postList.map(post => <ListPost key={ post.id } id={ post.id } title={ post.title } content={ post.content } />);
+        const postArray = postList.map(
+            post => <ListPost key={ post.get('id') } id={ post.get('id') } title={ post.get('title') } content={ post.get('content') } />
+        );
         return <div style={ padded }>
             { postArray }
         </div>;
@@ -30,9 +32,9 @@ class Feed extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    entities: state.entities,
-    ids: state.display.feed.ids,
-    isLoading: state.display.feed.isLoading
+    entities: state.get('entities'),
+    ids: state.getIn(['display', 'feed', 'ids']),
+    isLoading: state.getIn(['display', 'feed', 'isLoading'])
 });
 
 import { getPosts } from '../../actions'
