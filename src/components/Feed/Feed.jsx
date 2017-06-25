@@ -6,6 +6,7 @@ import { denormalize } from 'normalizr';
 import { post } from "../../settings";
 import ListPost from "./ListPost";
 import { Segment } from 'semantic-ui-react';
+import AddPostForm from "./AddPostForm";
 
 const padded = {
     padding: "4px"
@@ -22,6 +23,7 @@ class Feed extends React.Component {
             post => <ListPost key={ post.get('id') } id={ post.get('id') } title={ post.get('title') } content={ post.get('content') } />
         );
         return <div style={ padded }>
+            <AddPostForm/>
             { postArray }
         </div>;
     };

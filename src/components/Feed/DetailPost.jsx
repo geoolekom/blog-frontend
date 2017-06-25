@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { denormalize } from 'normalizr';
 
-import { Segment } from "semantic-ui-react";
+import { Segment, Header } from "semantic-ui-react";
 import { post } from "../../settings";
 
 
@@ -15,7 +15,8 @@ class DetailPost extends React.Component {
         this.id = this.props.match.params.id;
         const postDetail = denormalize(this.id, post, this.props.entities);
         return <Segment>
-            { postDetail ? postDetail.get('title') : null }
+            <Header>{ postDetail ? postDetail.get('title') : null }</Header>
+            { postDetail ? postDetail.get('content') : null }
         </Segment>;
     };
 
