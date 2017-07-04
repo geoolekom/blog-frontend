@@ -1,6 +1,5 @@
 import React from 'react';
-import { Menu as SemanticMenu } from "semantic-ui-react";
-
+import { Menu as SemanticMenu } from 'semantic-ui-react';
 
 class Menu extends React.Component {
     render = () => <SemanticMenu>

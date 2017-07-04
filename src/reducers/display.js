@@ -19,21 +19,21 @@ const defaultState = fromJS({
 export const display = (state = defaultState, action) => {
     switch (action.type) {
         case POST_REQUEST:
-            return state.setIn(['post', 'isLoading'], true);
+            return state.setIn([ 'post', 'isLoading' ], true);
         case POST_SUCCESS:
-            return state.setIn(['post', 'isLoading'], false);
+            return state.setIn([ 'post', 'isLoading' ], false);
         case POST_LIST_REQUEST:
         case ADD_POST_REQUEST:
-            return state.setIn(['feed', 'isLoading'], true);
+            return state.setIn([ 'feed', 'isLoading' ], true);
         case POST_LIST_SUCCESS:
-            return state.setIn(['feed', 'isLoading'], false).setIn(['feed', 'ids'], fromJS(action.payload.result));
+            return state.setIn([ 'feed', 'isLoading' ], false).setIn(['feed', 'ids'], fromJS(action.payload.result));
         case ADD_POST_SUCCESS:
             return state;
         case POST_FAILURE:
-            return state.setIn(['post', 'isLoading'], false);
+            return state.setIn([ 'post', 'isLoading' ], false);
         case POST_LIST_FAILURE:
         case ADD_POST_FAILURE:
-            return state.setIn(['feed', 'isLoading'], false);
+            return state.setIn([ 'feed', 'isLoading' ], false);
         default:
             return state;
     }

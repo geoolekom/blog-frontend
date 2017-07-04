@@ -16,6 +16,8 @@ export const notifications = store => next => action => {
                 position: 'tr',
             }));
             break;
+        default:
+            break;
     }
     return next(action);
 };

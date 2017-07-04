@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Form } from "semantic-ui-react";
+import { Form } from 'semantic-ui-react';
 
 
 class AddPostForm extends React.Component {

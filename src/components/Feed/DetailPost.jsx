@@ -3,9 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { denormalize } from 'normalizr';
 
-import { Segment, Header } from "semantic-ui-react";
-import { post } from "../../settings";
-
+import { Segment, Header } from 'semantic-ui-react';
+import { post } from '../../settings';
 
 class DetailPost extends React.Component {
     render = () => {
